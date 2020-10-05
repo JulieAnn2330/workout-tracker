@@ -4,7 +4,8 @@
   "description": "Workout tracker application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon indexnpm "
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/JulieAnn2330/workout-tracker#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongodb": "^3.6.2",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
