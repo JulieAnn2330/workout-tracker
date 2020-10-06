@@ -3,13 +3,12 @@ let db;
 const request = indexedDB.open("workout", 1);
 
 request.onupgradeneeded = function(event) {
-   // create object store called "pending" and set autoIncrement to true
-  db = event.target.result;
+    db = event.target.result;
   const workoutStore = db.createObjectStore("workout", {
     keyPath: "listID"
   });
   // Creates a statusIndex that we can query on.
-  workoutStore.createIndex("workoutIndex", "workouts");
+  workoutStore.createIndex("workoutIndex", "exercise");
 };
 
 request.onsuccess = function(event) {
@@ -26,21 +25,21 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
-  // create a transaction on the pending db with readwrite access
-  const workouts = db.transaction(["workout"], "readwrite");
+  // create an exercise on the workout db with readwrite access
+  const exercise = db.transaction(["workout"], "readwrite");
 
-  // access your pending object store
-  const store = workouts.objectStore("workout");
+  // access your workout object store
+  const store = exercise.objectStore("workout");
 
   // add record to your store with add method.
   store.add(record);
 }
 
 function checkDatabase() {
-  // open a transaction on your pending db
-  const workouts = db.transaction(["workout"], "readwrite");
-  // access your pending object store
-  const store = workouts.objectStore("workout");
+  // open a exercise on your workout db
+  const exercise = db.transaction(["workout"], "readwrite");
+  // access your workout object store
+  const store = exercise.objectStore("workout");
   // get all records from store and set to a variable
   const getAll = store.getAll();
 
@@ -56,11 +55,11 @@ function checkDatabase() {
       })
       .then(response => response.json())
       .then(() => {
-        // if successful, open a transaction on your pending db
-        const workouts = db.transaction(["workout"], "readwrite");
+        // if successful, open an exercise on your workout db
+        const exercise = db.transaction(["workout"], "readwrite");
 
-        // access your pending object store
-        const store = workouts.objectStore("workout");
+        // access your workout object store
+        const store = exercise.objectStore("workout");
 
         // clear all items in your store
         store.clear();
