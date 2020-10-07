@@ -26,7 +26,15 @@
 <hr color= "slateblue" noshade>
 
 <h3 id='description'>Description of Project</h3>
-<p>This interactive application allows the user to enter and track their exercises and workouts and view related stats. This application was a homework assignment for the University of Kansas Bootcamp This application is great for users who are motivated by tracking their workout data and seeing a statistical history of workouts. I learned a lot about MongoDB in this project. I'd never worked with a seed file before so figuring out the functionality of that was definitely a learning curve. I also am continuing to develop my Heroku skills -- I didn't have as many problems connecting this project as I have in the past. One thing that makes my project stand out is the addition of the buttons to the nav bar on the index and exercise html pages. They were links before, but the underline of the link is turned off so you couldn't see that they were two separate links. I had a hard time realizing that the reason my stats wouldn't show when I clicked them all the time is because it wasn't all just one link as it appeared to be. This project features input values, drop-downs and incremental values. The stats page is my favorite part of the project.</p><br>
+<p>This interactive application allows the user to enter and track their exercises and workouts and view related stats. This application was a homework assignment for the University of Kansas Bootcamp This application is great for users who are motivated by tracking their workout data and seeing a statistical history of workouts. I learned a lot about MongoDB in this project. I'd never worked with a seed file before so figuring out the functionality of that was definitely a learning curve. I also am continuing to develop my Heroku skills -- I didn't have as many problems connecting this project as I have in the past. One thing that makes my project stand out is the addition of the buttons to the nav bar on the index and exercise html pages. They were links before, but the underline of the link is turned off so you couldn't see that they were two separate links. I had a hard time realizing that the reason my stats wouldn't show when I clicked them all the time is because it wasn't all just one link as it appeared to be. This project features input values, drop-downs and incremental values. The stats page is my favorite part of the project. This project has been added to my professional portfolio, the link can be found here:
+
+<a href="https://julieann2330.github.io/professional-portfolio/">Julie Schaub Professional Portfolio</a>
+
+The link to the deployed app can be found here:
+
+<a href="https://cryptic-sands-27710.herokuapp.com/?id=5f7e298bc8df200017c17715">Workout Tracker Deployed Heroku Application</a>
+
+</p><br>
 <a href="#top" id="start">(Back to Top of Page)</a><br>
 <br>
 <hr color= "slateblue" noshade>
