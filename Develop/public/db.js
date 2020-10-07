@@ -1,72 +1,33 @@
-let db;
-// create a new db request for a "budget" database.
-const request = indexedDB.open("workout", 1);
-
-request.onupgradeneeded = function(event) {
-    db = event.target.result;
-  const workoutStore = db.createObjectStore("workout", {
-    keyPath: "listID"
-  });
+const request = window.indexedDB.open("workout", 1);
+      
+request.onupgradeneeded = event => {
+  const db = event.target.result;
+  const workoutStore = db.createObjectStore("workouts", {keyPath: "listID"});
   // Creates a statusIndex that we can query on.
-  workoutStore.createIndex("workoutIndex", "exercise");
-};
-
-request.onsuccess = function(event) {
-  db = event.target.result;
-
-  // check if app is online before reading from db
-  if (navigator.onLine) {
-    checkDatabase();
-  }
-};
-
-request.onerror = function(event) {
-  console.log("Woops! " + event.target.errorCode);
-};
-
-function saveRecord(record) {
-  // create an exercise on the workout db with readwrite access
-  const exercise = db.transaction(["workout"], "readwrite");
-
-  // access your workout object store
-  const store = exercise.objectStore("workout");
-
-  // add record to your store with add method.
-  store.add(record);
+  workoutStore.createIndex("exercises", "type"); 
 }
 
-function checkDatabase() {
-  // open a exercise on your workout db
-  const exercise = db.transaction(["workout"], "readwrite");
-  // access your workout object store
-  const store = exercise.objectStore("workout");
-  // get all records from store and set to a variable
-  const getAll = store.getAll();
+request.onsuccess = () => {
+  const db = request.result;
+  const transaction = db.transaction(["workouts"], "readwrite"); //This refs the db
+  const workoutStore = transaction.objectStore("workouts"); //This refs the table
+  const exercises = workoutStore.index("exercises"); //This declares the index
 
-  getAll.onsuccess = function() {
-    if (getAll.result.length > 0) {
-      fetch("/api/workout/bulk", {
-        method: "POST",
-        body: JSON.stringify(getAll.result),
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => response.json())
-      .then(() => {
-        // if successful, open an exercise on your workout db
-        const exercise = db.transaction(["workout"], "readwrite");
+  // Adds data to our objectStore
+  workoutStore.add({ listID: "1", type: "resistance", name: "BicepCurl", duration: 20, weight: 100, reps: 10, sets: 4});
+  workoutStore.add({ listID: "2", type: "resistance", name: "Quad Press", duration: 30, weight: 300, reps: 10, sets: 4});
+  workoutStore.add({ listID: "3", type: "resistance", name: "Bench Press", duration: 20, weight: 300, reps: 10, sets: 4});
+  workoutStore.add({ listID: "4", type: "resistance", name: "Military Press", duration: 20, weight: 300, reps: 10, sets: 4});
 
-        // access your workout object store
-        const store = exercise.objectStore("workout");
-
-        // clear all items in your store
-        store.clear();
-      });
-    }
+  // Return an item by keyPath
+  const getRequest = workoutStore.get("1");
+  getRequest.onsuccess = () => {
+    console.log(getRequest.result);
   };
-}
 
-// listen for app coming back online
-window.addEventListener("online", checkDatabase);
+  // Return an item by index
+  const getRequestIdx = exercises.getAll("resistance");
+  getRequestIdx.onsuccess = () => {
+    console.log(getRequestIdx.result); 
+  }; 
+};
