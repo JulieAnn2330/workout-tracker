@@ -82,3 +82,8 @@ Please make sure to update tests as appropriate.</p><br>
     
 </body>
 </html> 
+
+![Home](https://user-images.githubusercontent.com/64329660/95387297-23a4b900-08b6-11eb-9eff-f2e1ce1d524e.PNG)
+![Exercise](https://user-images.githubusercontent.com/64329660/95387309-269fa980-08b6-11eb-816c-4d6a3b7b094f.PNG)
+![Dashboard](https://user-images.githubusercontent.com/64329660/95387315-299a9a00-08b6-11eb-81dd-e8ab968a6067.PNG)
+![AtlasDB](https://user-images.githubusercontent.com/64329660/95387278-1c7dab00-08b6-11eb-8877-1930b9df7718.PNG)
